@@ -22,7 +22,7 @@ class MySQLDriver extends ORM.AbstractDB {
   disconnect () {
     if (this.connection) {
       try {
-        this.connection.end()
+        this.connection.destroy()
       } catch (e) {} finally {
         this.connection = null;
       }
