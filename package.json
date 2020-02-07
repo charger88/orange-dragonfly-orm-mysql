@@ -1,0 +1,31 @@
+{
+  "name": "orange-dragonfly-orm-mysql",
+  "version": "0.7.0",
+  "description": "MySQL Driver for Orange Dragonfly ORM",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/charger88/orange-dragonfly-orm-mysql.git"
+  },
+  "keywords": [
+    "database",
+    "object",
+    "sql",
+    "query",
+    "mysql"
+  ],
+  "author": {
+    "name": "Michael Kelner",
+    "email": "mikhail.kelner@gmail.com",
+    "url": "https://michaelkelner.com/"
+  },
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/charger88/orange-dragonfly-orm-mysql/issues"
+  },
+  "homepage": "https://github.com/charger88/orange-dragonfly-orm-mysql#readme",
+  "dependencies": {
+    "mysql": "^2.18.1",
+    "orange-dragonfly-orm": "^0.7.0"
+  }
+}
