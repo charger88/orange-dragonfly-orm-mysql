@@ -5,7 +5,7 @@ class MySQLDriver extends ORM.AbstractDB {
 
   connect (){
     return new Promise((resolve, reject) => {
-      this.connection = mysql.createConnection({
+      const connection = mysql.createConnection({
         host: this.config.host,
         port: this.config.port || 3306,
         user: this.config.user,
@@ -13,8 +13,13 @@ class MySQLDriver extends ORM.AbstractDB {
         database: this.config.database,
         connectTimeout: this.config.connect_timeout || 5000
       });
-      this.connection.connect((err) => {
-        err ? reject(err) : resolve(this.connection);
+      connection.connect((err) => {
+        if (err) {
+          reject(err)
+        } else {
+          this.connection = connection;
+          resolve(connection)
+        }
       });
     })
   }
