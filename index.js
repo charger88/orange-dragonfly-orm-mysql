@@ -5,14 +5,18 @@ class MySQLDriver extends ORM.AbstractDB {
 
   connect (){
     return new Promise((resolve, reject) => {
-      const connection = mysql.createConnection({
+      const config = {
         host: this.config.host,
         port: this.config.port || 3306,
         user: this.config.user,
         password: this.config.password,
         database: this.config.database,
         connectTimeout: this.config.connect_timeout || 5000
-      });
+      }
+      if (this.config.charset) {
+        config.charset = this.config.charset
+      }
+      const connection = mysql.createConnection();
       connection.connect((err) => {
         if (err) {
           reject(err)

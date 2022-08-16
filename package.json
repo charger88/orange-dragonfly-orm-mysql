@@ -1,6 +1,6 @@
 {
   "name": "orange-dragonfly-orm-mysql",
-  "version": "0.7.2",
+  "version": "0.7.3",
   "description": "MySQL Driver for Orange Dragonfly ORM",
   "main": "index.js",
   "repository": {
