@@ -16,7 +16,7 @@ class MySQLDriver extends ORM.AbstractDB {
       if (this.config.charset) {
         config.charset = this.config.charset
       }
-      const connection = mysql.createConnection();
+      const connection = mysql.createConnection(config);
       connection.connect((err) => {
         if (err) {
           reject(err)
