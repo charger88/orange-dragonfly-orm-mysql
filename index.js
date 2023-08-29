@@ -1,10 +1,13 @@
-const ORM = require('orange-dragonfly-orm');
-const mysql = require('mysql');
+const ORM = require('orange-dragonfly-orm')
+const RESERVED_WORDS = require('./reserved.json')
+const mysql = require('mysql')
 
 class MySQLDriver extends ORM.AbstractDB {
 
   connect (){
     return new Promise((resolve, reject) => {
+      ORM.ORMHelpers.RESERVED_WORDS = RESERVED_WORDS
+      ORM.ORMHelpers.ESCAPE_CHAR = '`'
       const config = {
         host: this.config.host,
         port: this.config.port || 3306,
@@ -16,12 +19,12 @@ class MySQLDriver extends ORM.AbstractDB {
       if (this.config.charset) {
         config.charset = this.config.charset
       }
-      const connection = mysql.createConnection(config);
+      const connection = mysql.createConnection(config)
       connection.connect((err) => {
         if (err) {
           reject(err)
         } else {
-          this.connection = connection;
+          this.connection = connection
           resolve(connection)
         }
       });
@@ -33,9 +36,11 @@ class MySQLDriver extends ORM.AbstractDB {
       try {
         this.connection.destroy()
       } catch (e) {} finally {
-        this.connection = null;
+        this.connection = null
       }
     }
+    ORM.ORMHelpers.RESERVED_WORDS = []
+    ORM.ORMHelpers.ESCAPE_CHAR = ''
   }
 
 }
